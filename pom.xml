@@ -23,7 +23,7 @@
 		<module>schedule-service</module>
 		<module>seat-service</module>
 		<module>invoice-service</module>
-		<module>schedule-service</module>
+		<module>api-gateway-service</module>
 	</modules>
 	<dependencies>
 		<dependency>
