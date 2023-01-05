@@ -3,6 +3,7 @@ package com.codewithisa.filmservice.service;
 import com.codewithisa.filmservice.VO.ResponseTemplateFSSVO;
 import com.codewithisa.filmservice.VO.ResponseTemplateFSVO;
 import com.codewithisa.filmservice.entity.Film;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface FilmService {
 
     Boolean existsByFilmCode(Long filmCode);
     Boolean existsByFilmName(String filmName);
+
+    List<Film> findFilmsYangSedangTayangWithPagination(int offset, int pageSize);
 }

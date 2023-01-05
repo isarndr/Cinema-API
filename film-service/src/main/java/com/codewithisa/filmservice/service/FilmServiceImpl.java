@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -171,5 +173,10 @@ public class FilmServiceImpl implements FilmService{
     @Override
     public Boolean existsByFilmName(String filmName) {
         return filmRepository.existsByFilmName(filmName);
+    }
+
+    @Override
+    public List<Film> findFilmsYangSedangTayangWithPagination(int offset, int pageSize) {
+        return filmRepository.findFilmsYangSedangTayang(PageRequest.of(offset, pageSize)).getContent();
     }
 }

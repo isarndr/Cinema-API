@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -109,6 +110,11 @@ public class FilmController {
     @GetMapping("/yang-sedang-tayang")
     public List<Film> getAllFilmYangSedangTayang(){
         return filmService.findFilmsYangSedangTayang();
+    }
+
+    @GetMapping("/yang-sedang-tayang/{offset}/{pageSize}")
+    private List<Film> getAllFilmYangSedangTayangWithPagination(@PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize){
+        return filmService.findFilmsYangSedangTayangWithPagination(offset, pageSize);
     }
 
     @GetMapping("/by-film-name/{filmName}")

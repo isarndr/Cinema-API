@@ -1,6 +1,8 @@
 package com.codewithisa.filmservice.repository;
 
 import com.codewithisa.filmservice.entity.Film;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -40,5 +42,10 @@ public interface FilmRepository extends JpaRepository<Film,Long> {
 
     Boolean existsByFilmName(String filmName);
 
+    @Query(
+            nativeQuery = true,
+            value = "select * from films where sedang_tayang = true"
+    )
+    Page<Film> findFilmsYangSedangTayang(PageRequest pageRequest);
 }
 
