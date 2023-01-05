@@ -117,6 +117,11 @@ public class FilmController {
         return filmService.findFilmsYangSedangTayangWithPagination(offset, pageSize);
     }
 
+    @GetMapping("/yang-sedang-tayang/{offset}/{pageSize}/{sortingField}")
+    private List<Film> getAllFilmYangSedangTayangWithPaginationAndSorting(@PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize, @PathVariable("sortingField") String sortingField){
+        return filmService.findFilmsYangSedangTayangWithPaginationAndSorting(offset, pageSize, sortingField);
+    }
+
     @GetMapping("/by-film-name/{filmName}")
     public ResponseEntity<?> findFilmByFilmName(@PathVariable("filmName") String filmName){
         try {

@@ -23,4 +23,6 @@ public interface FilmService {
     Boolean existsByFilmName(String filmName);
 
     List<Film> findFilmsYangSedangTayangWithPagination(int offset, int pageSize);
+
+    List<Film> findFilmsYangSedangTayangWithPaginationAndSorting(int offset, int pageSize, String sortingField);
 }
